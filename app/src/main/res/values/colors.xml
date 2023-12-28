@@ -6,4 +6,5 @@
     <color name="button_color_white">#E7E5E5</color>
     <color name="button_color_disabled">#CACACA</color>
     <color name="text_color_disabled">#A9A9A9</color>
+    <color name="card_color">#B3818A97</color>
 </resources>
