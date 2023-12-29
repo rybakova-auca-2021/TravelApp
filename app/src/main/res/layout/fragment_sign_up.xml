@@ -3,18 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_img"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.SignUpFragment">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="230dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="0dp"
-        android:layout_height="700dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/backgroung_img"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:cardBackgroundColor="@color/card_color"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.MaterialCardView.Cut">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +45,7 @@
                 style="@style/TextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/sign_up_to_continue"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +55,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_email"
                 android:layout_width="0dp"
-                android:layout_height="58dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_btn_white"
                 android:ems="10"
@@ -53,7 +72,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password"
                 android:layout_width="0dp"
-                android:layout_height="58dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_btn_white"
                 android:ems="10"
@@ -68,7 +87,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password_confirm"
                 android:layout_width="0dp"
-                android:layout_height="58dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_btn_white"
                 android:ems="10"
@@ -110,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/password"
                 android:textColor="@color/white"
@@ -122,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/confirm_password"
                 android:textColor="@color/white"
