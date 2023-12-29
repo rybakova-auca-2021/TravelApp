@@ -59,7 +59,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_btn_white"
                 android:ems="10"
-                android:inputType="phone"
+                android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"
