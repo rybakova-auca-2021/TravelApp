@@ -11,4 +11,13 @@
     <string name="password">Password</string>
     <string name="don_t_have_an_account_sign_up">Don’t have an account? <b>Sign Up</b></string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="please_enter_email_we_will_send_you_verification_code">Please enter email, we will send you verification code</string>
+    <string name="next">Next</string>
+    <string name="enter_verification_code">Enter verification code</string>
+    <string name="did_not_get_a_code_send_again">Did not get a code? <b>Send again</b></string>
+    <string name="create_new_password">Create new password</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="confirm">Confirm</string>
 </resources>
