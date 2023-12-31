@@ -1,16 +1,23 @@
 package com.example.travelapp.view
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentForgotPasswordBinding
+import com.example.travelapp.viewModel.ResetPasswordViewModel
 
 class ForgotPasswordFragment : Fragment() {
     private lateinit var binding: FragmentForgotPasswordBinding
+    private val viewModel: ResetPasswordViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +30,7 @@ class ForgotPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupNavigation()
+        setupValidation()
     }
 
     private fun setupNavigation() {
@@ -30,7 +38,53 @@ class ForgotPasswordFragment : Fragment() {
             findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
         }
         binding.btnNext.setOnClickListener {
-            findNavController().navigate(R.id.action_forgotPasswordFragment_to_verificationCodeFragment)
+            resetPassword()
         }
+    }
+
+    private fun setupValidation() {
+        val textWatchers = arrayOf(
+            binding.etEmail,
+        )
+        for (watchedText in textWatchers) {
+            watchedText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                @SuppressLint("ResourceAsColor")
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    val email = binding.etEmail.text.toString()
+                    binding.btnNext.isEnabled = email.isNotEmpty()
+
+                    val whiteColor = resources.getColor(R.color.white)
+                    binding.btnNext.setTextColor(whiteColor)
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+            })
+        }
+    }
+
+    private fun resetPassword() {
+        val email = binding.etEmail.text.toString()
+        viewModel.resetPassword(
+            email,
+            onSuccess = {
+                saveEmailToSharedPreferences(email)
+                findNavController().navigate(R.id.action_forgotPasswordFragment_to_verificationCodeFragment)
+            },
+            onError = {
+                println("Please, try again")
+            }
+        )
+    }
+
+    private fun saveEmailToSharedPreferences(email: String) {
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("email", email)
+        editor.apply()
     }
 }
