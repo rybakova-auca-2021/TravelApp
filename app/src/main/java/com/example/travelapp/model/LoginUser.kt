@@ -6,6 +6,7 @@ data class LoginUser(
 )
 data class LoginUserResponse(
     val message: String,
+    val user_id: String,
     val access_token: String,
     val refresh_token: String
 )
