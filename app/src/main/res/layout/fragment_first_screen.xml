@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/screen_1"
+    tools:context=".view.splash_screens.FirstScreenFragment">
+
+
+    <TextView
+        android:id="@+id/text_screen_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/first_screen_text"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_splash_screen_btn"
+        android:drawableStart="@drawable/baseline_arrow_forward_ios_24"
+        android:paddingStart="23dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_screen_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlSymmetry" />
+</androidx.constraintlayout.widget.ConstraintLayout>
