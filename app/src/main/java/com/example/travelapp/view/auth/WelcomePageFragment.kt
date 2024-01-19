@@ -1,4 +1,4 @@
-package com.example.travelapp.view
+package com.example.travelapp.view.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

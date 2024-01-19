@@ -1,4 +1,4 @@
-package com.example.travelapp.view
+package com.example.travelapp.view.auth
 
 import android.annotation.SuppressLint
 import android.os.Bundle

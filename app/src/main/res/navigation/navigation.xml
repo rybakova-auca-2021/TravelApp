@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomePageFragment"
-        android:name="com.example.travelapp.view.WelcomePageFragment"
+        android:name="com.example.travelapp.view.auth.WelcomePageFragment"
         android:label="fragment_welcome_page"
         tools:layout="@layout/fragment_welcome_page" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.travelapp.view.SignUpFragment"
+        android:name="com.example.travelapp.view.auth.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.travelapp.view.LoginFragment"
+        android:name="com.example.travelapp.view.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.travelapp.view.ForgotPasswordFragment"
+        android:name="com.example.travelapp.view.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/verificationCodeFragment"
-        android:name="com.example.travelapp.view.VerificationCodeFragment"
+        android:name="com.example.travelapp.view.auth.VerificationCodeFragment"
         android:label="fragment_verification_code"
         tools:layout="@layout/fragment_verification_code" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/newPasswordFragment"
-        android:name="com.example.travelapp.view.NewPasswordFragment"
+        android:name="com.example.travelapp.view.auth.NewPasswordFragment"
         android:label="fragment_new_password"
         tools:layout="@layout/fragment_new_password" >
         <action
