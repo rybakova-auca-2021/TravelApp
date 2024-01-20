@@ -3,19 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroung_img"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.auth.VerificationCodeFragment">
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backgroung_img"
-        app:layout_constraintBottom_toTopOf="@+id/materialCardView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView5"
