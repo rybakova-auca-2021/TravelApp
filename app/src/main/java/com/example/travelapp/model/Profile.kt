@@ -1,0 +1,29 @@
+package com.example.travelapp.model
+
+data class GetProfile (
+    val id: Int,
+    val username: String,
+    val email: String,
+    val first_name: String,
+    val last_name: String,
+    val profile: Profile
+)
+
+data class Profile(
+    val profile_photo: String
+)
+
+data class EditProfile (
+    val first_name: String,
+    val last_name: String,
+    val username: String,
+    val email: String,
+)
+
+data class EditProfileResponse (
+    val id: Int,
+    val first_name: String,
+    val last_name: String,
+    val username: String,
+    val email: String,
+)
