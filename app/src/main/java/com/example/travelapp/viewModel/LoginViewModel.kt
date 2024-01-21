@@ -2,6 +2,7 @@ package com.example.travelapp.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.travelapp.api.RetrofitInstance
+import com.example.travelapp.constants.Utils
 import com.example.travelapp.model.LoginUser
 import com.example.travelapp.model.LoginUserResponse
 import retrofit2.Call
@@ -27,6 +28,9 @@ class LoginViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     onSuccess.invoke()
                     val responseBody = response.body()
+                    if (responseBody != null) {
+                        Utils.token = responseBody.access_token
+                    }
                 } else {
                     onError.invoke()
                     println("Request failed with status code: ${response.code()}")

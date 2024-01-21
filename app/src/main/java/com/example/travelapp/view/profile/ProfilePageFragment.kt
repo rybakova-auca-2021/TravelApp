@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentProfilePageBinding
+import com.example.travelapp.view.HomeActivity
+import com.example.travelapp.viewModel.GetProfileViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -18,13 +21,14 @@ class ProfilePageFragment : Fragment() {
     private lateinit var adapter: ProfilePagesAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
+    private val viewModel: GetProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfilePageBinding.inflate(inflater, container, false)
-
+        (requireActivity() as HomeActivity).hideBtmNav()
         viewPager = binding.viewPager
         tabLayout = binding.tabLayout
 
@@ -47,11 +51,26 @@ class ProfilePageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupNavigation()
+        getProfileData()
     }
 
     private fun setupNavigation() {
         binding.btnEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profilePageFragment_to_editProfileFragment)
         }
+    }
+
+    private fun getProfileData() {
+        viewModel.getUserProfile(
+            onSuccess = {
+                userProfile ->
+                binding.profileName.text = "${userProfile.first_name} ${userProfile.last_name}"
+                binding.profileLocation.text = userProfile.profile.location
+                binding.profilePhone.text = userProfile.profile.phone_number
+            },
+            onError = {
+
+            }
+        )
     }
 }

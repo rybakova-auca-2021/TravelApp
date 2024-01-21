@@ -10,7 +10,8 @@ data class GetProfile (
 )
 
 data class Profile(
-    val profile_photo: String
+    val location: String,
+    val phone_number: String
 )
 
 data class EditProfile (
