@@ -77,7 +77,7 @@ class SignUpFragment : Fragment() {
 
         viewModel.register(email, password, repeatedPassword,
             onSuccess = {
-                findNavController().navigate(R.id.action_signUpFragment_to_mainPageFragment)
+                findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
             },
             onError = {
                 println("try again")

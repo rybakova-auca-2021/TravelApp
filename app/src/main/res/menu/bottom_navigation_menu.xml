@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btn_home"
+        android:icon="@drawable/home_icon"
+        android:title=""/>
+    <item
+        android:id="@+id/btn_search"
+        android:icon="@drawable/search_icon"
+        android:title=""/>
+    <item
+        android:id="@+id/btn_weather"
+        android:icon="@drawable/weather_icon"
+        android:title=""/>
+    <item
+        android:id="@+id/btn_saved"
+        android:icon="@drawable/baseline_thumb_up_24"
+        android:title=""/>
+    <item
+        android:id="@+id/btn_profile"
+        android:icon="@drawable/user_icon"
+        android:title=""/>
+</menu>

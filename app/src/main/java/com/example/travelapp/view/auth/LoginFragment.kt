@@ -1,6 +1,7 @@
 package com.example.travelapp.view.auth
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentLoginBinding
+import com.example.travelapp.view.HomeActivity
 import com.example.travelapp.viewModel.LoginViewModel
 
 class LoginFragment : Fragment() {
@@ -78,7 +80,8 @@ class LoginFragment : Fragment() {
             email,
             password,
             onSuccess = {
-                findNavController().navigate(R.id.action_loginFragment_to_mainPageFragment)
+                val intent = Intent(requireContext(), HomeActivity::class.java)
+                startActivity(intent)
             },
             onError = {
                 println("try again")
