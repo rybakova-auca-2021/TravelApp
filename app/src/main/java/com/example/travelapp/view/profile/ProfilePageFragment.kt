@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentProfilePageBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -40,5 +42,16 @@ class ProfilePageFragment : Fragment() {
         }.attach()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        binding.btnEditProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profilePageFragment_to_editProfileFragment)
+        }
     }
 }
