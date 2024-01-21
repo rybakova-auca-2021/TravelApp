@@ -18,7 +18,7 @@ interface ProfileInterface {
     fun getProfileData(@Header("Authorization") token: String): Call<GetProfile>
 
     @PUT("/profile/edit/")
-    fun editProfile(@Header("Authorization") token: String, @Body request: EditProfile): Call<EditProfileResponse>
+    fun editProfile(@Header("Authorization") token: String, @Body request: EditProfile): Call<EditProfile>
 
     @Multipart
     @PATCH("/profile_photo/edit/")
