@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstScreenFragment"
-        android:name="com.example.travelapp.view.splash_screens.FirstScreenFragment"
+        android:name="com.example.travelapp.presentation.view.splash_screens.FirstScreenFragment"
         android:label="fragment_first_screen"
         tools:layout="@layout/fragment_first_screen" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/secondScreenFragment"
-        android:name="com.example.travelapp.view.splash_screens.SecondScreenFragment"
+        android:name="com.example.travelapp.presentation.view.splash_screens.SecondScreenFragment"
         android:label="fragment_second_screen"
         tools:layout="@layout/fragment_second_screen" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/thirdScreenFragment"
-        android:name="com.example.travelapp.view.splash_screens.ThirdScreenFragment"
+        android:name="com.example.travelapp.presentation.view.splash_screens.ThirdScreenFragment"
         android:label="fragment_third_screen"
         tools:layout="@layout/fragment_third_screen" >
         <action
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/welcomePageFragment"
-        android:name="com.example.travelapp.view.auth.WelcomePageFragment"
+        android:name="com.example.travelapp.presentation.view.auth.WelcomePageFragment"
         android:label="fragment_welcome_page"
         tools:layout="@layout/fragment_welcome_page" >
         <action
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.travelapp.view.auth.SignUpFragment"
+        android:name="com.example.travelapp.presentation.view.auth.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.travelapp.view.auth.LoginFragment"
+        android:name="com.example.travelapp.presentation.view.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.travelapp.view.auth.ForgotPasswordFragment"
+        android:name="com.example.travelapp.presentation.view.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/verificationCodeFragment"
-        android:name="com.example.travelapp.view.auth.VerificationCodeFragment"
+        android:name="com.example.travelapp.presentation.view.auth.VerificationCodeFragment"
         android:label="fragment_verification_code"
         tools:layout="@layout/fragment_verification_code" >
         <action
@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/newPasswordFragment"
-        android:name="com.example.travelapp.view.auth.NewPasswordFragment"
+        android:name="com.example.travelapp.presentation.view.auth.NewPasswordFragment"
         android:label="fragment_new_password"
         tools:layout="@layout/fragment_new_password" >
         <action

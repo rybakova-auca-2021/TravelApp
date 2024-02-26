@@ -77,4 +77,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     implementation 'io.github.chaosleung:pinview:1.4.4'
+
+    implementation("io.insert-koin:koin-android:3.4.3")
 }

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/screen_3"
-    tools:context=".view.splash_screens.ThirdScreenFragment">
+    tools:context=".presentation.view.splash_screens.ThirdScreenFragment">
 
     <TextView
         android:id="@+id/text_screen_1"
