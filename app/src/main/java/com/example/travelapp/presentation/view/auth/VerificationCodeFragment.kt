@@ -9,15 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentVerificationCodeBinding
 import com.example.travelapp.presentation.viewModel.auth.CodeVerificationViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class VerificationCodeFragment : Fragment() {
     private lateinit var binding: FragmentVerificationCodeBinding
-    private val viewModel: CodeVerificationViewModel by viewModels()
+    private val viewModel: CodeVerificationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,14 +72,12 @@ class VerificationCodeFragment : Fragment() {
     private fun verifyCode() {
         val email = getEmailFromSharedPreferences()
         val code = binding.pin.text.toString()
-        viewModel.verifyCode(code, email,
-            onSuccess = {
+        viewModel.verifyCode(code, email)
+        viewModel.result.observe(viewLifecycleOwner, Observer { result ->
+            result.onSuccess {
                 findNavController().navigate(R.id.action_verificationCodeFragment_to_newPasswordFragment)
-            },
-            onError = {
-                println("Please, try again")
             }
-        )
+        })
     }
 
     private fun getEmailFromSharedPreferences(): String {

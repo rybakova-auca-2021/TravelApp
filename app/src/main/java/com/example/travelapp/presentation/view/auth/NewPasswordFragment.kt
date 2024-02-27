@@ -9,15 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentNewPasswordBinding
 import com.example.travelapp.presentation.viewModel.auth.NewPasswordViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NewPasswordFragment : Fragment() {
     private lateinit var binding: FragmentNewPasswordBinding
-    private val viewModel: NewPasswordViewModel by viewModels()
+    private val viewModel: NewPasswordViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,17 +75,12 @@ class NewPasswordFragment : Fragment() {
         val email = getEmailFromSharedPreferences()
         val password = binding.etPassword.text.toString()
         val repeatedPassword = binding.etPasswordConfirm.text.toString()
-        viewModel.createNewPassword(
-            password,
-            repeatedPassword,
-            email,
-            onSuccess =  {
+        viewModel.createNewPassword(password, repeatedPassword, email)
+        viewModel.result.observe(viewLifecycleOwner, Observer { result ->
+            result.onSuccess {
                 findNavController().navigate(R.id.action_newPasswordFragment_to_loginFragment)
-            },
-            onError = {
-                println("Please, try again")
             }
-        )
+        })
     }
 
     private fun getEmailFromSharedPreferences(): String {

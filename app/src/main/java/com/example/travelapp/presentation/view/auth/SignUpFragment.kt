@@ -8,15 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentSignUpBinding
 import com.example.travelapp.presentation.viewModel.auth.RegisterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
-    private val viewModel: RegisterViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,13 +77,11 @@ class SignUpFragment : Fragment() {
         val password = binding.etPassword.text.toString()
         val repeatedPassword = binding.etPasswordConfirm.text.toString()
 
-        viewModel.register(email, password, repeatedPassword,
-            onSuccess = {
+        viewModel.register(email, password, repeatedPassword)
+        viewModel.result.observe(viewLifecycleOwner, Observer { result ->
+            result.onSuccess {
                 findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
-            },
-            onError = {
-                println("try again")
             }
-        )
+        })
     }
 }

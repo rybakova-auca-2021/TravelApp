@@ -1,44 +1,40 @@
 package com.example.travelapp.presentation.viewModel.auth
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.travelapp.data.api.RetrofitInstance
-import com.example.travelapp.data.constants.Utils
-import com.example.travelapp.data.model.LoginUser
+import androidx.lifecycle.viewModelScope
 import com.example.travelapp.data.model.LoginUserResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.travelapp.data.repository.AuthRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
+
+    private val _result = MutableLiveData<Result<LoginUserResponse>>()
+    val result: LiveData<Result<LoginUserResponse>>
+        get() = _result
+
     fun login(
         email: String,
-        password: String,
-        onSuccess: () -> Unit,
-        onError:() -> Unit
+        password: String
     ) {
-        val apiInterface = RetrofitInstance.authApi
-
-        val request = LoginUser(email, password)
-        val call = apiInterface.login(request)
-        call.enqueue(object : Callback<LoginUserResponse> {
-            override fun onResponse(
-                call: Call<LoginUserResponse>,
-                response: Response<LoginUserResponse>
-            ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repository.login(email, password)
                 if (response.isSuccessful) {
-                    onSuccess.invoke()
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        Utils.token = responseBody.access_token
+                    val body = response.body()
+                    if (body != null) {
+                        _result.postValue(Result.success(body))
+                    } else {
+                        _result.postValue(Result.failure(Throwable("Response body is null")))
                     }
                 } else {
-                    onError.invoke()
-                    println("Request failed with status code: ${response.code()}")
+                    _result.postValue(Result.failure(Throwable("Login failed")))
                 }
+            } catch (e: Exception) {
+                _result.postValue(Result.failure(e))
             }
-
-            override fun onFailure(call: Call<LoginUserResponse>, t: Throwable) {
-                println("Request failed: ${t.message}")                }
-        })
+        }
     }
 }

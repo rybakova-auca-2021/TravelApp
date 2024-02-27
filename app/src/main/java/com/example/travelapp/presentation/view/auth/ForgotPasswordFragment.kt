@@ -9,15 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentForgotPasswordBinding
 import com.example.travelapp.presentation.viewModel.auth.ResetPasswordViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ForgotPasswordFragment : Fragment() {
     private lateinit var binding: FragmentForgotPasswordBinding
-    private val viewModel: ResetPasswordViewModel by viewModels()
+    private val viewModel: ResetPasswordViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,16 +70,11 @@ class ForgotPasswordFragment : Fragment() {
 
     private fun resetPassword() {
         val email = binding.etEmail.text.toString()
-        viewModel.resetPassword(
-            email,
-            onSuccess = {
-                saveEmailToSharedPreferences(email)
-                findNavController().navigate(R.id.action_forgotPasswordFragment_to_verificationCodeFragment)
-            },
-            onError = {
-                println("Please, try again")
-            }
-        )
+        viewModel.resetPassword(email)
+        viewModel.result.observe(viewLifecycleOwner, Observer {
+            saveEmailToSharedPreferences(email)
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_verificationCodeFragment)
+        })
     }
 
     private fun saveEmailToSharedPreferences(email: String) {

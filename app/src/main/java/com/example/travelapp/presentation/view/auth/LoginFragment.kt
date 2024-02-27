@@ -9,16 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentLoginBinding
 import com.example.travelapp.presentation.view.HomeActivity
 import com.example.travelapp.presentation.viewModel.auth.LoginViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,16 +77,13 @@ class LoginFragment : Fragment() {
     private fun login() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        viewModel.login(
-            email,
-            password,
-            onSuccess = {
+        viewModel.login(email, password)
+        viewModel.result.observe(viewLifecycleOwner, Observer { result ->
+            result.onSuccess {
                 val intent = Intent(requireContext(), HomeActivity::class.java)
                 startActivity(intent)
-            },
-            onError = {
-                println("try again")
-            })
+            }
+        })
     }
 
 }

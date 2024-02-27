@@ -7,33 +7,33 @@ import com.example.travelapp.data.model.NewPasswordModel
 import com.example.travelapp.data.model.PasswordReset
 import com.example.travelapp.data.model.RegisterUser
 import com.example.travelapp.data.model.RegisterUserResponse
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthInterface {
     @POST("/auth/signup/")
-    fun registerUser(
+    suspend fun registerUser(
         @Body request: RegisterUser
-    ) : Call<RegisterUserResponse>
+    ) : Response<RegisterUserResponse>
 
     @POST("/auth/login/")
-    fun login(
+    suspend fun login(
         @Body request: LoginUser
-    ) : Call<LoginUserResponse>
+    ) : Response<LoginUserResponse>
 
     @POST("/auth/password-reset/")
-    fun resetPassword(
+    suspend fun resetPassword(
         @Body request: PasswordReset
-    ) : Call<Unit>
+    ) : Response<Unit>
 
     @POST("/auth/verify-code/")
-    fun codeVerification(
+    suspend fun codeVerification(
         @Body request: CodeVerificationModel
-    ) : Call<Unit>
+    ) : Response<Unit>
 
     @POST("/auth/create-new-password/")
-    fun newPasswordCreate(
+    suspend fun newPasswordCreate(
         @Body request: NewPasswordModel
-    ) : Call<Unit>
+    ) : Response<Unit>
 }

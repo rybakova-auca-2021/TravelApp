@@ -1,39 +1,39 @@
 package com.example.travelapp.presentation.viewModel.auth
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.travelapp.data.api.RetrofitInstance
-import com.example.travelapp.data.model.NewPasswordModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.viewModelScope
+import com.example.travelapp.data.repository.AuthRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class NewPasswordViewModel : ViewModel() {
+class NewPasswordViewModel(private val repository: AuthRepository) : ViewModel() {
+
+    private val _result = MutableLiveData<Result<Unit>>()
+    val result: LiveData<Result<Unit>>
+        get() = _result
     fun createNewPassword (
         password: String,
         newPassword: String,
-        email: String,
-        onSuccess: () -> Unit,
-        onError:() -> Unit
+        email: String
     ) {
-        val apiInterface = RetrofitInstance.authApi
-
-        val request = NewPasswordModel(password, newPassword, email)
-        val call = apiInterface.newPasswordCreate(request)
-        call.enqueue(object : Callback<Unit> {
-            override fun onResponse(
-                call: Call<Unit>,
-                response: Response<Unit>
-            ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repository.createNewPassword(password, newPassword, email)
                 if (response.isSuccessful) {
-                    onSuccess.invoke()
+                    val body = response.body()
+                    if (body != null) {
+                        _result.postValue(Result.success(body))
+                    } else {
+                        _result.postValue(Result.failure(Throwable("Response body is null")))
+                    }
                 } else {
-                    onError.invoke()
-                    println("Request failed with status code: ${response.code()}")
+                    _result.postValue(Result.failure(Throwable("Setting new password is failed")))
                 }
+            } catch (e: Exception) {
+                _result.postValue(Result.failure(e))
             }
-
-            override fun onFailure(call: Call<Unit>, t: Throwable) {
-                println("Request failed: ${t.message}")                }
-        })
+        }
     }
 }
