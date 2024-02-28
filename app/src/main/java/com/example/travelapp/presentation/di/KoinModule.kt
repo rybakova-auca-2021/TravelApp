@@ -1,6 +1,7 @@
 package com.example.travelapp.presentation.di
 
 import com.example.travelapp.data.api.AuthInterface
+import com.example.travelapp.data.api.DataInterface
 import com.example.travelapp.data.api.ProfileInterface
 import com.example.travelapp.data.constants.Constant.Companion.BASE_URL
 import com.example.travelapp.data.repository.AuthRepository
@@ -10,6 +11,9 @@ import com.example.travelapp.presentation.viewModel.auth.LoginViewModel
 import com.example.travelapp.presentation.viewModel.auth.NewPasswordViewModel
 import com.example.travelapp.presentation.viewModel.auth.RegisterViewModel
 import com.example.travelapp.presentation.viewModel.auth.ResetPasswordViewModel
+import com.example.travelapp.presentation.viewModel.main.GetMustVisitListViewModel
+import com.example.travelapp.presentation.viewModel.main.GetPackagesViewModel
+import com.example.travelapp.presentation.viewModel.main.GetPopularListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -52,6 +56,7 @@ val networkModule = module {
 
     single { get<Retrofit>().create(AuthInterface::class.java) }
     single { get<Retrofit>().create(ProfileInterface::class.java) }
+    single { get<Retrofit>().create(DataInterface::class.java) }
 
 }
 
@@ -65,4 +70,7 @@ val viewModelModule = module {
     viewModel { NewPasswordViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { ResetPasswordViewModel(get()) }
+    viewModel { GetPopularListViewModel(get()) }
+    viewModel { GetMustVisitListViewModel(get()) }
+    viewModel { GetPackagesViewModel(get()) }
 }
