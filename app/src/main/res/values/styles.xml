@@ -7,6 +7,18 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="CategoryStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SeeAllBtnStyle">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="ButtonStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">55dp</item>

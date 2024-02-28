@@ -7,9 +7,19 @@
 
     <fragment
         android:id="@+id/mainPageFragment2"
-        android:name="com.example.travelapp.presentation.view.MainPageFragment"
+        android:name="com.example.travelapp.presentation.view.main.MainPageFragment"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" />
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPageFragment2_to_packagesPageFragment"
+            app:destination="@id/packagesPageFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_popularPageFragment"
+            app:destination="@id/popularPageFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_mustVisitPageFragment"
+            app:destination="@id/mustVisitPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.travelapp.presentation.view.search.SearchFragment"
@@ -42,5 +52,32 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profilePageFragment"
             app:destination="@id/profilePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/popularPageFragment"
+        android:name="com.example.travelapp.presentation.view.main.PopularPageFragment"
+        android:label="fragment_popular_page"
+        tools:layout="@layout/fragment_popular_page" >
+        <action
+            android:id="@+id/action_popularPageFragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/mustVisitPageFragment"
+        android:name="com.example.travelapp.presentation.view.main.MustVisitPageFragment"
+        android:label="fragment_must_visit_page"
+        tools:layout="@layout/fragment_must_visit_page" >
+        <action
+            android:id="@+id/action_mustVisitPageFragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/packagesPageFragment"
+        android:name="com.example.travelapp.presentation.view.main.PackagesPageFragment"
+        android:label="fragment_packages_page"
+        tools:layout="@layout/fragment_packages_page" >
+        <action
+            android:id="@+id/action_packagesPageFragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment2" />
     </fragment>
 </navigation>

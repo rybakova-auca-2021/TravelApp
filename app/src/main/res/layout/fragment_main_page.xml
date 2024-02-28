@@ -1,14 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.MainPageFragment">
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="70dp"
+    tools:context=".presentation.view.main.MainPageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <TextView
+            style="@style/CategoryStyle"
+            android:id="@+id/text_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popular"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/rv_popular"
+            app:layout_constraintTop_toBottomOf="@+id/text_popular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_popular" />
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:id="@+id/text_must_visit_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/must_visit_places"
+            app:layout_constraintStart_toStartOf="@+id/rv_popular"
+            app:layout_constraintTop_toBottomOf="@+id/rv_popular" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/rv_must_visit"
+            app:layout_constraintTop_toBottomOf="@+id/text_must_visit_place" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_must_visit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_must_visit_place" />
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:id="@+id/text_packages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/packages"
+            app:layout_constraintStart_toStartOf="@+id/rv_must_visit"
+            app:layout_constraintTop_toBottomOf="@+id/rv_must_visit" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/rv_packages"
+            app:layout_constraintTop_toBottomOf="@+id/text_packages" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_packages"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_packages" />
+
+        <TextView
+            android:id="@+id/btn_see_all_popular"
+            style="@style/SeeAllBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/see_all"
+            app:layout_constraintBottom_toBottomOf="@+id/text_popular"
+            app:layout_constraintEnd_toStartOf="@+id/img_all_popular"
+            app:layout_constraintTop_toTopOf="@+id/text_popular" />
+
+        <ImageView
+            android:id="@+id/img_all_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chevrons_right"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_see_all_popular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_see_all_popular" />
+
+        <TextView
+            android:id="@+id/btn_all_must_visit_places"
+            style="@style/SeeAllBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/see_all"
+            app:layout_constraintBottom_toBottomOf="@+id/text_must_visit_place"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/text_must_visit_place" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chevrons_right"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_all_must_visit_places"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_all_must_visit_places" />
+
+        <TextView
+            android:id="@+id/btn_all_packages"
+            style="@style/SeeAllBtnStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/see_all"
+            app:layout_constraintBottom_toBottomOf="@+id/text_packages"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/text_packages" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chevrons_right"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_all_packages"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_all_packages" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

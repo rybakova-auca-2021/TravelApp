@@ -23,4 +23,8 @@
     <string name="first_screen_text">Embark on a Journey of Discovery interests</string>
     <string name="second_screen_text">Your Passport to Seamless Travel</string>
     <string name="third_screen_text">Unlock Hidden Gems Around the Globe</string>
+    <string name="popular">Popular</string>
+    <string name="must_visit_places">Must visit places</string>
+    <string name="packages">Packages</string>
+    <string name="see_all">See all</string>
 </resources>
