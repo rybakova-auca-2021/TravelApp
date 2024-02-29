@@ -6,6 +6,8 @@ import com.example.travelapp.data.api.ProfileInterface
 import com.example.travelapp.data.constants.Constant.Companion.BASE_URL
 import com.example.travelapp.data.repository.AuthRepository
 import com.example.travelapp.data.repository.AuthRepositoryImpl
+import com.example.travelapp.data.repository.MainRepository
+import com.example.travelapp.data.repository.MainRepositoryImpl
 import com.example.travelapp.presentation.viewModel.auth.CodeVerificationViewModel
 import com.example.travelapp.presentation.viewModel.auth.LoginViewModel
 import com.example.travelapp.presentation.viewModel.auth.NewPasswordViewModel
@@ -62,6 +64,7 @@ val networkModule = module {
 
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get()) }
+    single<MainRepository> { MainRepositoryImpl(get()) }
 }
 
 val viewModelModule = module {
