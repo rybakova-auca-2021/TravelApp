@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelapp.R
 import com.example.travelapp.databinding.FragmentMainPageBinding
+import com.example.travelapp.presentation.view.HomeActivity
 import com.example.travelapp.presentation.viewModel.main.GetMustVisitListViewModel
 import com.example.travelapp.presentation.viewModel.main.GetPackagesViewModel
 import com.example.travelapp.presentation.viewModel.main.GetPopularListViewModel
@@ -37,6 +38,7 @@ class MainPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainPageBinding.inflate(inflater, container, false)
+        (requireActivity() as HomeActivity).showBtmNav()
         rvPopular = binding.rvPopular
         rvMustVisit = binding.rvMustVisit
         rvPackages = binding.rvPackages
