@@ -64,6 +64,7 @@ class MainPageFragment : Fragment() {
         rvMustVisit.adapter = mustVisitItemsAdapter
 
         packageAdapter = PackagesAdapter(emptyList())
+
         rvPackages.layoutManager = GridLayoutManager(requireContext(), 2)
         rvPackages.adapter = packageAdapter
     }
