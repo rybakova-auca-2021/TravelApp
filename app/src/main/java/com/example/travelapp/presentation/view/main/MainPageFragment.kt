@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelapp.R
+import com.example.travelapp.data.model.PlaceModel
 import com.example.travelapp.databinding.FragmentMainPageBinding
 import com.example.travelapp.presentation.view.HomeActivity
 import com.example.travelapp.presentation.viewModel.main.GetMustVisitListViewModel
@@ -52,6 +53,7 @@ class MainPageFragment : Fragment() {
         fetchPopularPlaces()
         fetchMustVisitPlaces()
         fetchPackagesPlaces()
+        setupAdapterClicks()
     }
 
     private fun setupAdapters() {
@@ -68,6 +70,34 @@ class MainPageFragment : Fragment() {
         rvPackages.layoutManager = GridLayoutManager(requireContext(), 2)
         rvPackages.adapter = packageAdapter
     }
+
+    private fun setupAdapterClicks() {
+        popularItemsAdapter.setOnItemClickListener(object : PopularItemsAdapter.OnItemClickListener {
+            override fun onItemClick(item: PlaceModel) {
+                val bundle = Bundle()
+                bundle.putInt("id", item.id)
+                bundle.putString("destination", "MainPageFragment")
+                findNavController().navigate(R.id.detailPageFragment, bundle)
+            }
+        })
+        mustVisitItemsAdapter.setOnItemClickListener(object : MustVisitPlacesAdapter.OnItemClickListener {
+            override fun onItemClick(item: PlaceModel) {
+                val bundle = Bundle()
+                bundle.putInt("id", item.id)
+                bundle.putString("destination", "MainPageFragment")
+                findNavController().navigate(R.id.detailPageFragment, bundle)
+            }
+        })
+        packageAdapter.setOnItemClickListener(object : PackagesAdapter.OnItemClickListener {
+            override fun onItemClick(item: PlaceModel) {
+                val bundle = Bundle()
+                bundle.putInt("id", item.id)
+                bundle.putString("destination", "MainPageFragment")
+                findNavController().navigate(R.id.detailPageFragment, bundle)
+            }
+        })
+    }
+
 
     private fun fetchPopularPlaces() {
         getPopularListViewModel.getPopularPlaces()

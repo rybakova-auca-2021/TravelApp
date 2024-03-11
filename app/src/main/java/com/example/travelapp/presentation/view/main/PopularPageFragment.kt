@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelapp.R
+import com.example.travelapp.data.model.PlaceModel
 import com.example.travelapp.databinding.FragmentPopularPageBinding
 import com.example.travelapp.presentation.view.HomeActivity
 import com.example.travelapp.presentation.viewModel.main.GetPopularListViewModel
@@ -41,12 +42,24 @@ class PopularPageFragment : Fragment() {
         setupNavigation()
         setupAdapter()
         fetchData()
+        setupAdapterClicks()
     }
 
     private fun setupAdapter() {
         adapter = PlacesAdapter(emptyList())
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView.adapter = adapter
+    }
+
+    private fun setupAdapterClicks() {
+        adapter.setOnItemClickListener(object : PlacesAdapter.OnItemClickListener {
+            override fun onItemClick(item: PlaceModel) {
+                val bundle = Bundle()
+                bundle.putInt("id", item.id)
+                bundle.putString("destination", "PopularPageFragment")
+                findNavController().navigate(R.id.detailPageFragment, bundle)
+            }
+        })
     }
 
     private fun fetchData() {

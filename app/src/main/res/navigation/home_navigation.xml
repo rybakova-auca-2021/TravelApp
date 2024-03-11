@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_mainPageFragment2_to_mustVisitPageFragment"
             app:destination="@id/mustVisitPageFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_detailPageFragment"
+            app:destination="@id/detailPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -61,6 +64,9 @@
         <action
             android:id="@+id/action_popularPageFragment_to_mainPageFragment2"
             app:destination="@id/mainPageFragment2" />
+        <action
+            android:id="@+id/action_popularPageFragment_to_detailPageFragment"
+            app:destination="@id/detailPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/mustVisitPageFragment"
@@ -70,6 +76,9 @@
         <action
             android:id="@+id/action_mustVisitPageFragment_to_mainPageFragment2"
             app:destination="@id/mainPageFragment2" />
+        <action
+            android:id="@+id/action_mustVisitPageFragment_to_detailPageFragment"
+            app:destination="@id/detailPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/packagesPageFragment"
@@ -79,5 +88,23 @@
         <action
             android:id="@+id/action_packagesPageFragment_to_mainPageFragment2"
             app:destination="@id/mainPageFragment2" />
+        <action
+            android:id="@+id/action_packagesPageFragment_to_detailPageFragment"
+            app:destination="@id/detailPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailPageFragment"
+        android:name="com.example.travelapp.presentation.view.main.DetailPageFragment"
+        android:label="fragment_detail_page"
+        tools:layout="@layout/fragment_detail_page" >
+        <action
+            android:id="@+id/action_detailPageFragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment2" />
+        <action
+            android:id="@+id/action_detailPageFragment_to_mustVisitPageFragment"
+            app:destination="@id/mustVisitPageFragment" />
+        <action
+            android:id="@+id/action_detailPageFragment_to_popularPageFragment"
+            app:destination="@id/popularPageFragment" />
     </fragment>
 </navigation>
