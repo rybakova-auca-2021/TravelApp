@@ -8,4 +8,7 @@ interface MainRepository {
     suspend fun getPopularList() : Call<List<PlaceModel>>
     suspend fun getMustVisitList() : Call<List<PlaceModel>>
     suspend fun getPackages() : Call<List<PlaceModel>>
+    suspend fun getPopularPlaceDetail(id: Int) : Call<PlaceModel>
+    suspend fun getMustVisitPlaceDetail(id: Int) : Call<PlaceModel>
+    suspend fun getPackageDetail(id: Int) : Call<PlaceModel>
 }

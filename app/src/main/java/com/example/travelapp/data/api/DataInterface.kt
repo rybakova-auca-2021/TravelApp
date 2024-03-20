@@ -4,6 +4,7 @@ import com.example.travelapp.data.model.PlaceModel
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface DataInterface {
 
@@ -15,4 +16,13 @@ interface DataInterface {
 
     @GET("/places/packages/")
     fun getPackagesPlaces() : Call<List<PlaceModel>>
+
+    @GET("/places/popular-places/{place_id}/")
+    fun getPopularPlaceDetail(@Path("place_id") id: Int) : Call<PlaceModel>
+
+    @GET("/places/must-visit-places/{place_id}/")
+    fun getMustVisitPlaceDetail(@Path("place_id") id: Int) : Call<PlaceModel>
+
+    @GET("/places/packages/{place_id}/")
+    fun getPackageDetail(@Path("place_id") id: Int) : Call<PlaceModel>
 }

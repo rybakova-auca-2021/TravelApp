@@ -77,6 +77,7 @@ class MainPageFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putInt("id", item.id)
                 bundle.putString("destination", "MainPageFragment")
+                bundle.putString("detail", "popular")
                 findNavController().navigate(R.id.detailPageFragment, bundle)
             }
         })
@@ -85,6 +86,7 @@ class MainPageFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putInt("id", item.id)
                 bundle.putString("destination", "MainPageFragment")
+                bundle.putString("detail", "mustvisit")
                 findNavController().navigate(R.id.detailPageFragment, bundle)
             }
         })
@@ -93,6 +95,7 @@ class MainPageFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putInt("id", item.id)
                 bundle.putString("destination", "MainPageFragment")
+                bundle.putString("detail", "package")
                 findNavController().navigate(R.id.detailPageFragment, bundle)
             }
         })

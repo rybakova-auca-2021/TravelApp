@@ -14,7 +14,10 @@ import com.example.travelapp.presentation.viewModel.auth.NewPasswordViewModel
 import com.example.travelapp.presentation.viewModel.auth.RegisterViewModel
 import com.example.travelapp.presentation.viewModel.auth.ResetPasswordViewModel
 import com.example.travelapp.presentation.viewModel.main.GetMustVisitListViewModel
+import com.example.travelapp.presentation.viewModel.main.GetMustVisitPlaceDetailViewModel
+import com.example.travelapp.presentation.viewModel.main.GetPackageDetailViewModel
 import com.example.travelapp.presentation.viewModel.main.GetPackagesViewModel
+import com.example.travelapp.presentation.viewModel.main.GetPopularDetailViewModel
 import com.example.travelapp.presentation.viewModel.main.GetPopularListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -74,6 +77,9 @@ val viewModelModule = module {
     viewModel { RegisterViewModel(get()) }
     viewModel { ResetPasswordViewModel(get()) }
     viewModel { GetPopularListViewModel(get()) }
+    viewModel { GetPopularDetailViewModel(get()) }
     viewModel { GetMustVisitListViewModel(get()) }
+    viewModel { GetMustVisitPlaceDetailViewModel(get()) }
     viewModel { GetPackagesViewModel(get()) }
+    viewModel { GetPackageDetailViewModel(get()) }
 }

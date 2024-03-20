@@ -17,4 +17,16 @@ class MainRepositoryImpl(private val dataInterface: DataInterface) : MainReposit
     override suspend fun getPackages(): Call<List<PlaceModel>>  {
         return dataInterface.getPackagesPlaces()
     }
+
+    override suspend fun getPopularPlaceDetail(id: Int): Call<PlaceModel> {
+        return dataInterface.getPopularPlaceDetail(id)
+    }
+
+    override suspend fun getMustVisitPlaceDetail(id: Int): Call<PlaceModel> {
+        return dataInterface.getMustVisitPlaceDetail(id)
+    }
+
+    override suspend fun getPackageDetail(id: Int): Call<PlaceModel> {
+        return dataInterface.getPackageDetail(id)
+    }
 }
