@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.travelapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -79,4 +79,6 @@ dependencies {
     implementation 'io.github.chaosleung:pinview:1.4.4'
 
     implementation("io.insert-koin:koin-android:3.4.3")
+
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 }
